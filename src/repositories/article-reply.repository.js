@@ -54,9 +54,10 @@ export const findRepliesByArticleId = async ({ articleId, limit, cursor }) => {
     ...(cursor && { cursor: { id: cursor } }),
     skip: cursor ? 1 : 0,
     take: limit,
-    orderBy: {
+    orderBy: [{
       createdAt: 'desc',
-    },
+
+    }, { id: 'desc' }],
     select: {
       id: true,
       articleId: true,
